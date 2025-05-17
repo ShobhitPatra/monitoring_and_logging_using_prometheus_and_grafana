@@ -14,10 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const prom_client_1 = __importDefault(require("prom-client"));
-const requestCounterMiddleware_1 = __importDefault(require("./middleware/requestCounterMiddleware"));
+const metrics_1 = __importDefault(require("./middleware/metrics"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use(requestCounterMiddleware_1.default);
+app.use(metrics_1.default);
 app.get("/", (req, res) => {
     res.json("hello from home");
 });

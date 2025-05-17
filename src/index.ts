@@ -1,10 +1,10 @@
 import express from "express";
 import client from "prom-client";
-import requestCounterMiddleware from "./middleware/requestCounterMiddleware";
+import metricsMiddleware from "./middleware/metrics";
 const app = express();
 
 app.use(express.json());
-app.use(requestCounterMiddleware);
+app.use(metricsMiddleware);
 app.get("/", (req, res) => {
   res.json("hello from home");
 });

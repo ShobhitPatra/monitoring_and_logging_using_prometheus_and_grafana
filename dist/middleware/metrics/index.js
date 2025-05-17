@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const requestsCounter_1 = require("../metrics/requestsCounter");
-const activeUsersGauge_1 = require("../metrics/activeUsersGauge");
-const requestCounterMiddleware = (req, res, next) => {
+const requestsCounter_1 = require("../../metrics/requestsCounter");
+const activeUsersGauge_1 = require("../../metrics/activeUsersGauge");
+const metricsMiddleware = (req, res, next) => {
     const startTime = Date.now();
     activeUsersGauge_1.activeUsersGauge.inc();
     res.on("finish", () => {
@@ -17,4 +17,4 @@ const requestCounterMiddleware = (req, res, next) => {
     });
     next();
 };
-exports.default = requestCounterMiddleware;
+exports.default = metricsMiddleware;
